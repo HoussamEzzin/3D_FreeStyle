@@ -1,6 +1,7 @@
 import * as THREE from "https://cdn.skypack.dev/three";
 // set the scene :
 const scene = new THREE.Scene();
+scene.background = new THREE.Color( 0xffffff );
 // set the camera, first param : fov (field of view)
 const camera = new THREE.PerspectiveCamera(
   75,
@@ -15,13 +16,13 @@ document.body.appendChild(renderer.domElement);
 
 const geometry_box = new THREE.BoxGeometry();
 const material_box = new THREE.MeshBasicMaterial({
-  color: 0x00ff00,
+  color: 0xff0000,
 });
 const cube = new THREE.Mesh(geometry_box, material_box);
 
 //create a line
 
-const material_line = new THREE.LineBasicMaterial( {color: 0x0000ff});
+const material_line = new THREE.LineBasicMaterial( {color: 0x000000});
 
 
 const points = [];
@@ -33,9 +34,14 @@ const geometry_line = new THREE.BufferGeometry().setFromPoints( points);
 
 const line = new THREE.Line( geometry_line,material_line)
 
+const mesh_geometry = new THREE.ConeGeometry(1,4,10);
+const mesh_material = new THREE.MeshBasicMaterial( {color: 0x000000});
+const cone = new THREE.Mesh(mesh_geometry,mesh_material);
+scene.add(cone);
+scene.add(line);
 
 scene.add(cube);
-scene.add(line);
+
 
 camera.position.z = 5;
 renderer.render(scene, camera);
