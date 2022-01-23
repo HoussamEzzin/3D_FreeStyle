@@ -43,10 +43,38 @@ const main = () =>{
         makeInstance(geometry,0x1288aa, 2),
     ]
 
+
     
+    
+    const resizeRendererToDisplaySize = (renderer) =>{
+        /* 
+        this function checks if the renderer's canvas is not already
+        the size it is being displayed as and if so set its size.
+        ** drawingbuffer size : canvas's internal size (resolution)
+    */
+        const canvas = renderer.domElement;
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        const needResize = canvas.width !== width || canvas.height !== height;
+        if(needResize){
+            renderer.setSize( width, height, false);
+            // setSize
+            // set the canvas's drawingbuffer size
+        }
+        return needResize;
+    }
     
     const render = (time) => {
         time *= 0.001; // in seconds
+        
+
+        if(resizeRendererToDisplaySize(renderer)){
+            const canvas = renderer.domElement;
+            camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            camera.updateProjectionMatrix();  
+        }
+          
+
 
         cubes.forEach( (cube,ndx) => {
             const speed = 1 + ndx * .1;

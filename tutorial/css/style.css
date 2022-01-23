@@ -1,0 +1,13 @@
+body{
+    font-size: 16pt;
+}
+/* A canvas's default display mode is inline
+inline elements can end up adding whitespace to what is displayed.
+*/
+#c {
+    float: left;
+    padding: 5px;
+    width: 200px;
+    height: 150px;
+}
+
