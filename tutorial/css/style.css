@@ -11,3 +11,8 @@ inline elements can end up adding whitespace to what is displayed.
     height: 150px;
 }
 
+#d{
+    padding: 5px;
+    width: 800px;
+    height: 750px;
+}
